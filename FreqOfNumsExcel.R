@@ -15,6 +15,8 @@ substitute_df = function(){
 ###################################
 path_of_file = "path"
 name_of_file = "name_of_file.xlsx"
+name_of_sheet = "name_of_sheet"
+colnum_of_data = 21
 print_plot = F
 print_xlsx = F
 ###################################
@@ -22,8 +24,8 @@ print_xlsx = F
 gfsdata_df = tryCatch({
   setwd(path_of_file)
   inputfile_jne = name_of_file
-  src_jne = read_xlsx(inputfile_jne, sheet = "Monitoring", col_names = T)
-  gfsdata_df = src_jne[21]
+  src_jne = read_xlsx(inputfile_jne, sheet = name_of_sheet, col_names = T)
+  gfsdata_df = src_jne[colnum_of_data]
 },
 error = function(e) {
   cat("Error: ", conditionMessage(e), "\n")
