@@ -11,11 +11,16 @@ substitute_df = function(){
   return(new_df)
 }
 
+##------- some parameters -------##
+###################################
+path_of_file = "path"
+name_of_file = "name_of_file.xlsx"
 print_plot = F
+###################################
 
 gfsdata_df = tryCatch({
-  setwd("path_of_file")
-  inputfile_jne = "name_of_file.xlsx"
+  setwd(path_of_file)
+  inputfile_jne = name_of_file
   src_jne = read_xlsx(inputfile_jne, sheet = "Monitoring", col_names = T)
   gfsdata_df = src_jne[21]
   print_plot = T
@@ -70,10 +75,14 @@ for (i in 1:6){
 
 #print(sum_gfs)
 
+
+##------- some parameters -------##
+###################################
 light = "#6BA1BB"
 dark = "#005478"
 Header = "Title of Barchart"
 bars = "Column"
+###################################
 
 
 #------ base plot ------#
@@ -189,7 +198,7 @@ if (print_plot == T){
   output_jne = "gfs_jne.xlsx"
   write_xlsx(sum_gfs_df, output_jne)
 } else {
-  cat("Someting went wrong, data not found. \nRandom data generated for illustrating - no output saved.")
+  cat("No data found. \nRandom data generated for illustrating - no output saved.")
 }
 
 
